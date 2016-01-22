@@ -1,27 +1,35 @@
 public int moveLen;
+public int multi;
 
 public void setup()
 {
 
- size(512, 512);
- background(0);
- moveLen = 512;
+ size(800, 800);
+ background(50);
+ moveLen = 800;
+ multi = 1;
 }
 public void draw()
 {
-	background(0);
-sierpinski(0,512,moveLen);
+	background(50);
+sierpinski(0,800,moveLen,multi);
 }
 
 public void mousePressed()
 {
 	
-		moveLen = moveLen/2;
+		multi = multi + 1;
 	
 }
-public void sierpinski(int x, int y, int len) 
+public void keyPressed()
 {
-	if(len <8){
+	if(key == 'a'){
+		multi = 1;
+	}
+}
+public void sierpinski(int x, int y, int len, int count) 
+{
+	if(count <2){
 		
 		triangle(x, y, x+len, y, x+len/2, y-len);
 		
@@ -30,11 +38,11 @@ public void sierpinski(int x, int y, int len)
 	}
 	
 	else{
-	
-
-	sierpinski(x,y,len/2);
-	sierpinski(x+len/2,y,len/2);
-	sierpinski(x+len/4,y-len/2,len/2);
+	noStroke();
+	fill((int)(Math.random()*255), 0, 0);
+	sierpinski(x,y,len/2, count - 1);
+	sierpinski(x+len/2,y,len/2, count - 1);
+	sierpinski(x+len/4,y-len/2,len/2, count - 1);
 	
 	
 }
