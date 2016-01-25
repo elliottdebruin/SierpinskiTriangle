@@ -17,8 +17,15 @@ sierpinski(0,800,moveLen,multi);
 
 public void mousePressed()
 {
-	
+	if(mouseButton == LEFT){
 		multi = multi + 1;
+	}
+	if(mouseButton == RIGHT){
+		multi = multi -1;
+		if(multi<1){
+			multi = 1;
+		}
+	}
 	
 }
 public void keyPressed()
